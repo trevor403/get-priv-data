@@ -1,0 +1,19 @@
+--- NvFBCLibrary.h.orig	2019-12-17 00:58:01.769914962 -0500
++++ NvFBCLibrary.h	2019-12-17 00:58:59.643449480 -0500
+@@ -133,12 +133,16 @@
+             return NULL;
+         }
+ 
++        static uint8_t enableKey[] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
++
+         NvFBCCreateParams createParams;
+         memset(&createParams, 0, sizeof(createParams));
+         createParams.dwVersion = NVFBC_CREATE_PARAMS_VER;
+         createParams.dwInterfaceType = type;
+         createParams.pDevice = devicePtr;
+         createParams.dwAdapterIdx = adapter;
++        createParams.dwPrivateDataSize = 16;
++        createParams.pPrivateData = (void*)enableKey;
+ 
+         res = pfn_create(&createParams);
+         

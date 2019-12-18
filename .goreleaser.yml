@@ -1,0 +1,32 @@
+project_name: get-priv-data
+env:
+  - GO111MODULE=on
+before:
+  hooks:
+  - go mod tidy
+builds:
+- main: ./cmd/get-priv-data
+  env:
+  - CGO_ENABLED=0
+  goos:
+  - linux
+  - darwin
+  - windows
+  goarch:
+  - 386
+  - amd64
+archives:
+- format: zip
+  replacements:
+    386: i386
+    amd64: x86_64
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - '^docs:'
+    - '^test:'
