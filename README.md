@@ -25,3 +25,8 @@ You can get the executable via `go get` as well
 ```
 go get github.com/trevor403/get-priv-data/cmd/...
 ```
+
+## Disclaimer
+Executing this program may put you in violation of Steam's EULA
+
+I do not provide any legal guarantees around this software or it's usage. However it is my opinion that the Reverse Engineering effort that went into developing it is covered by the DMCA as it promotes interoperability.
